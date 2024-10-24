@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RecommendedWidget extends StatelessWidget {
   final double price;
-  final String imagepath;
+  final String imageUrl;
   final String title;
   final String description;
   final int rating;
@@ -10,7 +10,7 @@ class RecommendedWidget extends StatelessWidget {
   const RecommendedWidget({
     super.key,
     required this.price,
-    required this.imagepath,
+    required this.imageUrl,
     required this.title,
     required this.description,
     required this.rating,
@@ -34,8 +34,8 @@ class RecommendedWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                child: Image.asset(
-                  imagepath,
+                child: Image.network(
+                  imageUrl,
                   height: 180,
                   width: screenWidth * 0.8, // Responsive width
                   fit: BoxFit.cover,
@@ -121,21 +121,21 @@ class CarouselWidget extends StatelessWidget {
         children: const [
            RecommendedWidget(
             price: 120,
-            imagepath: 'assets/images/house/house1.jpg',
+            imageUrl: 'https://picsum.photos/seed/homme/200/300',
             title: 'Carinthia Lake see Breakfast...',
             description: 'Private room / 4 beds',
             rating: 4,
           ),
            RecommendedWidget(
             price: 350,
-            imagepath: 'assets/images/house/house2.jpg',
+            imageUrl: 'https://picsum.photos/seed/lake/200/300',
             title: 'Luxury Villa with Ocean View',
             description: 'Entire villa / 5 beds',
             rating: 5,
           ),
            RecommendedWidget(
             price: 220,
-            imagepath: 'assets/images/house/house3.jpg',
+            imageUrl: 'https://picsum.photos/seed/mountain/200/300',
             title: 'Cozy Mountain Cabin',
             description: 'Private cabin / 3 beds',
             rating: 4,

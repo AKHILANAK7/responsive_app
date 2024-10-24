@@ -24,8 +24,8 @@ class HostingAdCard extends StatelessWidget {
           // Background Image
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              'assets/images/hosting.jpg', 
+            child: Image.network(
+              'https://picsum.photos/300/350', 
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,

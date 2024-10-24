@@ -5,29 +5,22 @@ class PopularLocations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> customTexts = [
-      'India',
-      'Moscow',
-      'USA',
-      'Canada',
-      'Japan'
-    ];
-
-    final List<String> imagePaths = [
-      'assets/images/india.jpg',
-      'assets/images/moscow.jpg',
-      'assets/images/usa.jpg',
-      'assets/images/canada.jpg',
-      'assets/images/japan.jpg',
+    // A single multidimensional array containing location names and image URLs
+    final List<List<String>> locations = [
+      ['India', 'https://picsum.photos/seed/india/160/240'],
+      ['Moscow', 'https://picsum.photos/seed/moscow/160/240'],
+      ['USA', 'https://picsum.photos/seed/usa/160/240'],
+      ['Canada', 'https://picsum.photos/seed/canada/160/240'],
+      ['Japan', 'https://picsum.photos/seed/japan/160/240'],
     ];
 
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
-        height: 240, 
+        height: 240,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: customTexts.length,
+          itemCount: locations.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -35,20 +28,39 @@ class PopularLocations extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.0),
                 child: Stack(
                   children: [
-                    // Asset Image
-                    Image.asset(
-                      imagePaths[index],
+
+                    Image.network(
+                      locations[index][1], 
                       fit: BoxFit.cover,
-                      width: 160, 
+                      width: 160,
                       height: 240,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      (loadingProgress.expectedTotalBytes ?? 1)
+                                  : null,
+                            ),
+                          );
+                        }
+                      },
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(Icons.error, color: Colors.red),
+                        );
+                      },
                     ),
                     Positioned(
-                      bottom: 10, 
+                      bottom: 10,
                       left: 0,
                       right: 0,
                       child: Center(
                         child: Text(
-                          customTexts[index],
+                          locations[index][0],  // Fetch the location name from the array
                           style: const TextStyle(
                             fontSize: 18,
                             color: Colors.white,
