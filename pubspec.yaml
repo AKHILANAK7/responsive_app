@@ -20,19 +20,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - assets/images/india.jpg
-    - assets/images/moscow.jpg
-    - assets/images/usa.jpg
-    - assets/images/canada.jpg
-    - assets/images/japan.jpg
-    - assets/images/house/house1.jpg
-    - assets/images/house/house2.jpg
-    - assets/images/house/house3.jpg
-    - assets/images/house/house4.jpg
-    - assets/images/hosting.jpg
-    - assets/images/house/house5.jpg
-    - assets/images/house/house6.jpg
-    - assets/images/house/house7.jpg
-    - assets/images/house/house8.jpg
