@@ -130,3 +130,55 @@ class MostViewed extends StatelessWidget {
     );
   }
 }
+
+
+class MostViewedPage extends StatelessWidget {
+  const MostViewedPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> mostViewedData = [
+      {
+        'imageUrl': 'https://picsum.photos/seed/building/200/300',
+        'price': 120,
+        'rating': 4.5,
+        'title': 'Carinthia Lake see Breakfast',
+        'description': 'Private room / 4 beds',
+      },
+      {
+        'imageUrl': 'https://picsum.photos/seed/home/200/300',
+        'price': 150,
+        'rating': 4.8,
+        'title': 'Mountain View Cabin',
+        'description': 'Entire cabin / 2 beds',
+      },
+      {
+        'imageUrl': 'https://picsum.photos/seed/apartment/200/300',
+        'price': 200,
+        'rating': 4.7,
+        'title': 'City Apartment',
+        'description': 'Entire apartment / 3 beds',
+      },
+    ];
+
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: mostViewedData.length,
+      itemBuilder: (context, index) {
+        final item = mostViewedData[index];
+        return Column(
+          children: [
+            MostViewed(
+              imageUrl: item['imageUrl'],
+              price: item['price'],
+              rating: item['rating'],
+              title: item['title'],
+              description: item['description'],
+            ),
+            const SizedBox(height: 20),
+          ],
+        );
+      },
+    );
+  }
+}

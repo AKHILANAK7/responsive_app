@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_app/widgets/ad_widget.dart';
-import 'package:responsive_app/widgets/most_view/most_view_page.dart';
+import 'package:responsive_app/widgets/most_view/most_viewed_screen.dart';
 import 'package:responsive_app/widgets/popular_locations.dart';
 import 'package:responsive_app/widgets/recommended_widget.dart';
 import 'package:responsive_app/widgets/search_bar.dart';
