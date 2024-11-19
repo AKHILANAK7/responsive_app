@@ -5,6 +5,9 @@ class HostingAdCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -17,33 +20,31 @@ class HostingAdCard extends StatelessWidget {
           ),
         ],
       ),
-      width: 300,
-      height: 350,
+      width: screenWidth * 0.85, 
+      height: screenHeight * 0.4,
       child: Stack(
         children: [
           // Background Image
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image.network(
-              'https://picsum.photos/300/350', 
+              'https://picsum.photos/300/350',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
             ),
           ),
-          // Dark Overlay for Text Visibility
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.black.withOpacity(0.5),
             ),
           ),
-          // Text and Button Overlay aligned at the top
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,  // Aligns everything at the top
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Text(
                   'Hosting Fee for',
@@ -63,7 +64,7 @@ class HostingAdCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 SizedBox(
-                  width: 160,  // Adjust width to match the button size in the image
+                  width: screenWidth * 0.5, 
                   child: TextButton(
                     onPressed: () {
                       // Handle the button tap
